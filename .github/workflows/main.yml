@@ -42,6 +42,7 @@ jobs:
         run: | 
           git add web/packs
           git commit -m "Updated sticker pack [CI]"
+          git push
 
   publish: 
     runs-on: ubuntu-latest
