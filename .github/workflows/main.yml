@@ -22,7 +22,7 @@ jobs:
           nix develop --command pip install .
       - name: Generate config.json file
         run: |
-          nix develop --command bash -c "jq -n --arg hs \"$HOMESERVER\" --arg uid \"$USER_ID\" --arg token \"$ACCESS_TOKEN\" '{homeserver: $hs, user_id: $uid, access_token: $token}' > config.json"
+          nix develop jq -n --arg hs \"$HOMESERVER\" --arg uid \"$USER_ID\" --arg token \"$ACCESS_TOKEN\" '{homeserver: $hs, user_id: $uid, access_token: $token}' > config.json
           cat config.json
         env:
           HOMESERVER: ${{ vars.HOMESERVER }}
