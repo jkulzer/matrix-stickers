@@ -7,6 +7,9 @@ on:
 
 permissions:
   contents: write # Needed to push back to GitHub
+  pages: write # Needed for Github Pages
+  id-token: write # Needed for Github Pages
+
 
 jobs:
   build:
