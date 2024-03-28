@@ -17,8 +17,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: Enter development shell
-        run: nix develop
       - name: Generate config.json file
         run: |
           nix develop --command jq -n --arg hs "$HOMESERVER" --arg uid "$USER_ID" --arg token "$ACCESS_TOKEN" '{homeserver: $hs, user_id: $uid, access_token: $token}' > config.json
