@@ -28,6 +28,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Build sticker packs
         run: |
+          nix develop
           sticker-pack kibty --add-to-index web/packs
       - name: Configure git
         run: |
