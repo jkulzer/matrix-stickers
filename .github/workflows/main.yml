@@ -21,15 +21,14 @@ jobs:
         run: nix develop
       - name: Generate config.json file
         run: |
-          jq -n --arg hs "$HOMESERVER" --arg uid "$USER_ID" --arg token "$ACCESS_TOKEN" '{homeserver: $hs, user_id: $uid, access_token: $token}'
+          nix develop --command jq -n --arg hs "$HOMESERVER" --arg uid "$USER_ID" --arg token "$ACCESS_TOKEN" '{homeserver: $hs, user_id: $uid, access_token: $token}'
         env:
           HOMESERVER: ${{ vars.HOMESERVER }}
           USER_ID: ${{ vars.USER_ID }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Build sticker packs
         run: |
-          nix develop
-          sticker-pack kibty --add-to-index web/packs
+          nix develop --command sticker-pack kibty --add-to-index web/packs
       - name: Configure git
         run: |
           git config --global user.name jkulzer-bot
